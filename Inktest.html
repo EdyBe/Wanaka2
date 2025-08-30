@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter by Letter Handwriting</title>
+  <style>
+    body {
+      background: #fafafa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    svg {
+      width: 95%;
+      max-width: 1200px;
+    }
+
+    tspan {
+      fill: none;
+      stroke: black;
+      stroke-width: 2;
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: handwriting 0.5s linear forwards;
+    }
+
+    @keyframes handwriting {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Sequential animation — 27 letters total */
+    tspan:nth-child(1)  { animation-delay: 0s; }
+    tspan:nth-child(2)  { animation-delay: 0.093s; }
+    tspan:nth-child(3)  { animation-delay: 0.186s; }
+    tspan:nth-child(4)  { animation-delay: 0.279s; }
+    tspan:nth-child(5)  { animation-delay: 0.372s; }
+    tspan:nth-child(6)  { animation-delay: 0.465s; }
+    tspan:nth-child(7)  { animation-delay: 0.558s; }
+    tspan:nth-child(8)  { animation-delay: 0.651s; }
+    tspan:nth-child(9)  { animation-delay: 0.744s; }
+    tspan:nth-child(10) { animation-delay: 0.837s; }
+    tspan:nth-child(11) { animation-delay: 0.930s; }
+    tspan:nth-child(12) { animation-delay: 1.023s; }
+    tspan:nth-child(13) { animation-delay: 1.116s; }
+    tspan:nth-child(14) { animation-delay: 1.209s; }
+    tspan:nth-child(15) { animation-delay: 1.302s; }
+    tspan:nth-child(16) { animation-delay: 1.395s; }
+    tspan:nth-child(17) { animation-delay: 1.488s; }
+    tspan:nth-child(18) { animation-delay: 1.581s; }
+    tspan:nth-child(19) { animation-delay: 1.674s; }
+    tspan:nth-child(20) { animation-delay: 1.767s; }
+    tspan:nth-child(21) { animation-delay: 1.860s; }
+    tspan:nth-child(22) { animation-delay: 1.953s; }
+    tspan:nth-child(23) { animation-delay: 2.046s; }
+    tspan:nth-child(24) { animation-delay: 2.139s; }
+    tspan:nth-child(25) { animation-delay: 2.232s; }
+    tspan:nth-child(26) { animation-delay: 2.325s; }
+    tspan:nth-child(27) { animation-delay: 2.418s; }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <svg viewBox="0 0 1400 200">
+    <text x="50" y="120" font-family="Archivo" font-size="48">
+      <tspan dx="20">P</tspan>
+      <tspan dx="-10">l</tspan>
+      <tspan dx="-10">a</tspan>
+      <tspan dx="-10">y</tspan>
+      <tspan dx="-10">i</tspan>
+      <tspan dx="-10">n</tspan>
+      <tspan dx="-10">g</tspan>
+      <tspan xml:space="preserve"> </tspan>
+      <tspan dx="-10">t</tspan>
+      <tspan dx="-10">h</tspan>
+      <tspan dx="-10">e</tspan>
+      <tspan xml:space="preserve"> </tspan>
+      <tspan dx="-10">b</tspan>
+      <tspan dx="-10">e</tspan>
+      <tspan dx="-10">a</tspan>
+      <tspan dx="-10">u</tspan>
+      <tspan dx="-10">t</tspan>
+      <tspan dx="-10">i</tspan>
+      <tspan dx="-10">f</tspan>
+      <tspan dx="-10">u</tspan>
+      <tspan dx="-10">l</tspan>
+      <tspan xml:space="preserve"> </tspan>
+      <tspan dx="-10">g</tspan>
+      <tspan dx="-10">a</tspan>
+      <tspan dx="-10">m</tspan>
+      <tspan dx="-10">e</tspan>
+    </text>
+  </svg>
+</body>
+</html>
