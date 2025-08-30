@@ -643,24 +643,20 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
     transform: scale(1.3);
 }
 
-/* Enhanced Responsive Sponsor Cards for Mobile */
+/* Enhanced Responsive Sponsor Cards for Mobile - Desktop-like Carousel */
 @media (max-width: 768px) {
     .sponsors-container {
-        height: 550px;
+        height: 500px;
         padding: 0 1rem;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, 
-            rgba(35, 31, 32, 0.95) 0%, 
-            rgba(203, 182, 114, 0.08) 50%, 
-            rgba(35, 31, 32, 0.95) 100%);
     }
     
     .sponsors-slider {
-        width: 100%;
-        height: 470px;
+        width: 100vw;
+        height: 500px;
         padding: 0;
         left: 0;
         position: relative;
@@ -671,184 +667,80 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
     
     .sponsor-slide {
         position: absolute;
-        width: 280px;
-        height: 320px;
-        padding: 1.8rem 1.2rem;
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.20) 0%, 
-            rgba(255, 255, 255, 0.14) 30%, 
-            rgba(255, 255, 255, 0.10) 70%, 
-            rgba(255, 255, 255, 0.08) 100%);
-        backdrop-filter: blur(30px) saturate(200%);
-        border-radius: 70px;
-        border: 1px solid rgba(203, 182, 114, 0.35);
-        box-shadow: 
-            0 30px 60px rgba(0, 0, 0, 0.3),
-            0 15px 30px rgba(203, 182, 114, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.25),
-            0 0 0 1px rgba(203, 182, 114, 0.08);
-        transition: all 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+        width: 200px; /* Smaller width for side cards */
+        height: 150px; /* Smaller height for side cards */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px; /* Match desktop border-radius */
+        padding: 1rem;
         text-align: center;
+        border: 1px solid rgba(203, 182, 114, 0.3);
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         opacity: 0;
         visibility: hidden;
         filter: blur(3px);
         z-index: 1;
         top: 50%;
         transform: translateY(-50%);
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     
-    .sponsor-slide::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            var(--primary-gold) 20%, 
-            rgba(203, 182, 114, 0.9) 50%, 
-            var(--primary-gold) 80%, 
-            transparent 100%);
-        transform: scaleX(0);
-        transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        border-radius: 70px 70px 0 0;
-    }
-    
-    .sponsor-slide::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at center, 
-            rgba(203, 182, 114, 0.06) 0%, 
-            rgba(203, 182, 114, 0.03) 40%, 
-            transparent 70%);
-        opacity: 0;
-        transition: opacity 1.2s ease;
-        pointer-events: none;
-        animation: subtle-glow 6s ease-in-out infinite;
-    }
-    
-    @keyframes subtle-glow {
-        0%, 100% { 
-            transform: scale(1) rotate(0deg); 
-            opacity: 0; 
-        }
-        50% { 
-            transform: scale(1.1) rotate(180deg); 
-            opacity: 0.4; 
-        }
-    }
-    
-    /* Hide side sponsors completely on mobile - only show focal sponsor */
-    .sponsor-slide.side-left,
-    .sponsor-slide.side-right {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-    }
-    
+    /* Show 3 sponsors at a time - center focal + left and right side sponsors */
     .sponsor-slide.focal {
         opacity: 1 !important;
         visibility: visible !important;
         filter: blur(0px) !important;
         z-index: 10 !important;
         left: 50% !important;
-        transform: translateX(-50%) translateY(-50%) scale(1.1) !important;
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.25) 0%, 
-            rgba(255, 255, 255, 0.18) 30%, 
-            rgba(255, 255, 255, 0.14) 70%, 
-            rgba(255, 255, 255, 0.12) 100%);
-        backdrop-filter: blur(35px) saturate(220%);
-        border: 1px solid rgba(203, 182, 114, 0.6);
-        box-shadow: 
-            0 40px 80px rgba(0, 0, 0, 0.35),
-            0 25px 50px rgba(203, 182, 114, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.35),
-            0 0 0 1px rgba(203, 182, 114, 0.12),
-            0 0 100px rgba(203, 182, 114, 0.1);
-        border-radius: 80px;
+        transform: translateX(-50%) translateY(-50%) scale(1.3) !important;
+        width: 280px; /* Keep focal card current size */
+        height: 200px; /* Keep focal card current height */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        padding: 1.5rem;
     }
     
-    .sponsor-slide.focal::before {
-        transform: scaleX(1);
-        box-shadow: 0 0 30px rgba(203, 182, 114, 0.5);
-        height: 6px;
+    .sponsor-slide.side-left {
+        opacity: 0.6 !important;
+        visibility: visible !important;
+        filter: blur(2px) !important;
+        z-index: 5 !important;
+        left: 5% !important; /* Adjusted for mobile */
+        transform: translateY(-50%) scale(0.7) !important; /* Smaller scale for mobile */
     }
     
-    .sponsor-slide.focal::after {
-        opacity: 1;
-        animation: enhanced-glow 8s ease-in-out infinite;
+    .sponsor-slide.side-right {
+        opacity: 0.6 !important;
+        visibility: visible !important;
+        filter: blur(2px) !important;
+        z-index: 5 !important;
+        right: 5% !important; /* Adjusted for mobile */
+        transform: translateY(-50%) scale(0.7) !important; /* Smaller scale for mobile */
     }
     
-    @keyframes enhanced-glow {
-        0%, 100% { 
-            transform: scale(1) rotate(0deg); 
-            opacity: 0.3; 
-        }
-        33% { 
-            transform: scale(1.15) rotate(120deg); 
-            opacity: 0.6; 
-        }
-        66% { 
-            transform: scale(1.05) rotate(240deg); 
-            opacity: 0.4; 
-        }
+    /* Hide all other sponsors */
+    .sponsor-slide:not(.focal):not(.side-left):not(.side-right) {
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
     
     .sponsor-logo {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, 
-            var(--primary-gold) 0%, 
-            rgba(203, 182, 114, 0.95) 50%, 
-            var(--primary-gold) 100%);
+        width: 50px; /* Smaller for side cards */
+        height: 50px;
+        background: var(--primary-gold);
         border-radius: 50%;
-        margin: 0 auto 1rem;
+        margin: 0 auto 0.8rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: var(--primary-dark);
         font-weight: bold;
-        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 1s ease;
         overflow: hidden;
-        filter: drop-shadow(0 10px 20px rgba(203, 182, 114, 0.5));
-        padding: 8px;
-        flex-shrink: 0;
-        position: relative;
-        box-shadow: 
-            0 8px 16px rgba(203, 182, 114, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    }
-    
-    .sponsor-logo::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.5) 0%, 
-            rgba(255, 255, 255, 0.2) 30%, 
-            transparent 70%);
-        border-radius: 50%;
-        opacity: 0;
-        transition: opacity 0.6s ease;
-    }
-    
-    .sponsor-slide.focal .sponsor-logo::before {
-        opacity: 1;
+        padding: 6px;
     }
     
     .sponsor-logo img {
@@ -856,108 +748,61 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
         height: 100%;
         object-fit: contain;
         border-radius: 50%;
-        transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
     
     .sponsor-slide.focal .sponsor-logo {
-        width: 85px;
-        height: 85px;
-        font-size: 1.7rem;
-        transform: scale(1.05);
-        filter: drop-shadow(0 15px 30px rgba(203, 182, 114, 0.6));
-        margin-bottom: 1.2rem;
-        box-shadow: 
-            0 12px 24px rgba(203, 182, 114, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5),
-            0 0 0 3px rgba(203, 182, 114, 0.1);
-        padding: 10px;
-    }
-    
-    .sponsor-slide.focal .sponsor-logo img {
-        transform: scale(1.08);
+        width: 80px; /* Keep focal logo current size */
+        height: 80px;
+        font-size: 1.8rem;
+        transform: scale(1.1);
+        padding: 8px;
+        margin-bottom: 1rem;
     }
     
     .sponsor-slide h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.8rem;
+        font-size: 0.9rem; /* Smaller for side cards */
+        margin-bottom: 0.5rem;
         color: var(--primary-white);
         font-weight: 600;
-        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-        letter-spacing: 0.5px;
-        text-shadow: 
-            0 4px 8px rgba(0, 0, 0, 0.4),
-            0 0 20px rgba(203, 182, 114, 0.1);
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        line-height: 1.4;
-        position: relative;
+        transition: all 1s ease;
     }
     
     .sponsor-slide.focal h3 {
-        font-size: 1.4rem;
+        font-size: 1.2rem; /* Keep focal text current size */
         color: var(--primary-gold);
-        text-shadow: 
-            0 4px 8px rgba(0, 0, 0, 0.5),
-            0 0 30px rgba(203, 182, 114, 0.4),
-            0 2px 4px rgba(203, 182, 114, 0.3);
-        margin-bottom: 1rem;
-        transform: translateY(-2px);
-        letter-spacing: 0.8px;
+        margin-bottom: 0.8rem;
     }
     
     .sponsor-slide p {
-        font-size: 0.9rem;
-        opacity: 0.9;
-        line-height: 1.5;
+        font-size: 0.7rem; /* Smaller for side cards */
+        opacity: 0.8;
+        line-height: 1.2;
         color: var(--primary-white);
-        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-        font-weight: 400;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        text-align: center;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        text-shadow: 
-            0 2px 4px rgba(0, 0, 0, 0.3),
-            0 0 10px rgba(203, 182, 114, 0.05);
+        transition: all 1s ease;
+        display: none; /* Hide description on side cards for mobile */
     }
     
     .sponsor-slide.focal p {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 0.9rem; /* Keep focal description current size */
         opacity: 1;
-        text-shadow: 
-            0 2px 4px rgba(0, 0, 0, 0.4),
-            0 0 15px rgba(203, 182, 114, 0.15),
-            0 1px 2px rgba(203, 182, 114, 0.2);
-        -webkit-line-clamp: 4;
-        transform: translateY(-1px);
+        line-height: 1.3;
+        display: block; /* Show description on focal card */
     }
 }
 
 @media (max-width: 480px) {
     .sponsors-container {
-        height: 80vh;
+        height: 500px;
         padding: 0 0.5rem;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: linear-gradient(135deg, 
-            rgba(35, 31, 32, 0.98) 0%, 
-            rgba(203, 182, 114, 0.06) 30%, 
-            rgba(35, 31, 32, 0.95) 70%, 
-            rgba(203, 182, 114, 0.08) 100%);
     }
     
     .sponsors-slider {
-        width: 100%;
-        height: 70vh;
+        width: 100vw;
+        height: 500px;
         padding: 0;
         left: 0;
         position: relative;
@@ -968,161 +813,80 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
     
     .sponsor-slide {
         position: absolute;
-        width: 280px;
-        height: 320px;
-        padding: 1.8rem 1.2rem;
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.20) 0%, 
-            rgba(255, 255, 255, 0.14) 30%, 
-            rgba(255, 255, 255, 0.10) 70%, 
-            rgba(255, 255, 255, 0.08) 100%);
-        backdrop-filter: blur(30px) saturate(200%);
-        border-radius: 70px;
-        border: 1px solid rgba(203, 182, 114, 0.35);
-        box-shadow: 
-            0 30px 60px rgba(0, 0, 0, 0.3),
-            0 15px 30px rgba(203, 182, 114, 0.2),
-            inset 0 1px 0 rgba(255, 255, 255, 0.25),
-            0 0 0 1px rgba(203, 182, 114, 0.08);
-        transition: all 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+        width: 160px; /* Even smaller width for very small screens */
+        height: 120px; /* Even smaller height for very small screens */
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px; /* Match desktop border-radius */
+        padding: 0.8rem;
         text-align: center;
+        border: 1px solid rgba(203, 182, 114, 0.3);
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         opacity: 0;
         visibility: hidden;
         filter: blur(3px);
         z-index: 1;
         top: 50%;
         transform: translateY(-50%);
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
     
-    .sponsor-slide::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, 
-            transparent 0%, 
-            var(--primary-gold) 20%, 
-            rgba(203, 182, 114, 0.9) 50%, 
-            var(--primary-gold) 80%, 
-            transparent 100%);
-        transform: scaleX(0);
-        transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        border-radius: 70px 70px 0 0;
-    }
-    
-    .sponsor-slide::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at center, 
-            rgba(203, 182, 114, 0.04) 0%, 
-            rgba(203, 182, 114, 0.02) 40%, 
-            transparent 70%);
-        opacity: 0;
-        transition: opacity 1s ease;
-        pointer-events: none;
-        animation: subtle-pulse 4s ease-in-out infinite;
-    }
-    
-    @keyframes subtle-pulse {
-        0%, 100% { transform: scale(1) rotate(0deg); opacity: 0; }
-        50% { transform: scale(1.1) rotate(180deg); opacity: 0.3; }
-    }
-    
-    /* Hide side sponsors completely on mobile - only show focal sponsor */
-    .sponsor-slide.side-left,
-    .sponsor-slide.side-right {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-    }
-    
+    /* Show 3 sponsors at a time - center focal + left and right side sponsors */
     .sponsor-slide.focal {
         opacity: 1 !important;
         visibility: visible !important;
         filter: blur(0px) !important;
         z-index: 10 !important;
         left: 50% !important;
-        transform: translateX(-50%) translateY(-50%) scale(1.1) !important;
-        background: linear-gradient(145deg, 
-            rgba(255, 255, 255, 0.25) 0%, 
-            rgba(255, 255, 255, 0.18) 30%, 
-            rgba(255, 255, 255, 0.14) 70%, 
-            rgba(255, 255, 255, 0.12) 100%);
-        backdrop-filter: blur(35px) saturate(220%);
-        border: 1px solid rgba(203, 182, 114, 0.6);
-        box-shadow: 
-            0 40px 80px rgba(0, 0, 0, 0.35),
-            0 25px 50px rgba(203, 182, 114, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.35),
-            0 0 0 1px rgba(203, 182, 114, 0.12),
-            0 0 100px rgba(203, 182, 114, 0.1);
-        border-radius: 80px;
+        transform: translateX(-50%) translateY(-50%) scale(1.3) !important;
+        width: 240px; /* Smaller focal card for very small screens */
+        height: 160px; /* Smaller focal card height */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        padding: 1.2rem;
     }
     
-    .sponsor-slide.focal::before {
-        transform: scaleX(1);
-        box-shadow: 0 0 20px rgba(203, 182, 114, 0.4);
+    .sponsor-slide.side-left {
+        opacity: 0.6 !important;
+        visibility: visible !important;
+        filter: blur(2px) !important;
+        z-index: 5 !important;
+        left: 2% !important; /* Closer positioning for very small screens */
+        transform: translateY(-50%) scale(0.6) !important; /* Even smaller scale */
     }
     
-    .sponsor-slide.focal::after {
-        opacity: 1;
+    .sponsor-slide.side-right {
+        opacity: 0.6 !important;
+        visibility: visible !important;
+        filter: blur(2px) !important;
+        z-index: 5 !important;
+        right: 2% !important; /* Closer positioning for very small screens */
+        transform: translateY(-50%) scale(0.6) !important; /* Even smaller scale */
+    }
+    
+    /* Hide all other sponsors */
+    .sponsor-slide:not(.focal):not(.side-left):not(.side-right) {
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
     
     .sponsor-logo {
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, 
-            var(--primary-gold) 0%, 
-            rgba(203, 182, 114, 0.95) 50%, 
-            var(--primary-gold) 100%);
+        width: 40px; /* Much smaller for side cards on very small screens */
+        height: 40px;
+        background: var(--primary-gold);
         border-radius: 50%;
-        margin: 0 auto 1rem;
+        margin: 0 auto 0.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.4rem;
+        font-size: 1rem;
         color: var(--primary-dark);
         font-weight: bold;
-        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 1s ease;
         overflow: hidden;
-        filter: drop-shadow(0 10px 20px rgba(203, 182, 114, 0.5));
-        padding: 8px;
-        flex-shrink: 0;
-        position: relative;
-        box-shadow: 
-            0 8px 16px rgba(203, 182, 114, 0.3),
-            inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    }
-    
-    .sponsor-logo::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(135deg, 
-            rgba(255, 255, 255, 0.4) 0%, 
-            rgba(255, 255, 255, 0.1) 50%, 
-            transparent 100%);
-        border-radius: 50%;
-        opacity: 0;
-        transition: opacity 0.6s ease;
-    }
-    
-    .sponsor-slide.focal .sponsor-logo::before {
-        opacity: 1;
+        padding: 4px;
     }
     
     .sponsor-logo img {
@@ -1130,81 +894,45 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
         height: 100%;
         object-fit: contain;
         border-radius: 50%;
-        transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
     
     .sponsor-slide.focal .sponsor-logo {
-        width: 85px;
-        height: 85px;
-        font-size: 1.7rem;
-        transform: scale(1.05);
-        filter: drop-shadow(0 15px 30px rgba(203, 182, 114, 0.6));
-        margin-bottom: 1.2rem;
-        box-shadow: 
-            0 12px 24px rgba(203, 182, 114, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.5),
-            0 0 0 3px rgba(203, 182, 114, 0.1);
-        padding: 10px;
-    }
-    
-    .sponsor-slide.focal .sponsor-logo img {
-        transform: scale(1.08);
+        width: 60px; /* Smaller focal logo for very small screens */
+        height: 60px;
+        font-size: 1.4rem;
+        transform: scale(1.1);
+        padding: 6px;
+        margin-bottom: 0.8rem;
     }
     
     .sponsor-slide h3 {
-        font-size: 1.05rem;
-        margin-bottom: 0.6rem;
+        font-size: 0.7rem; /* Much smaller for side cards */
+        margin-bottom: 0.3rem;
         color: var(--primary-white);
         font-weight: 600;
-        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-        letter-spacing: 0.3px;
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        line-height: 1.3;
+        transition: all 1s ease;
     }
     
     .sponsor-slide.focal h3 {
-        font-size: 1.2rem;
+        font-size: 1rem; /* Smaller focal text for very small screens */
         color: var(--primary-gold);
-        text-shadow: 
-            0 4px 8px rgba(0, 0, 0, 0.5),
-            0 0 20px rgba(203, 182, 114, 0.3);
-        margin-bottom: 0.8rem;
-        transform: translateY(-2px);
-        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
     }
     
     .sponsor-slide p {
-        font-size: 0.85rem;
-        opacity: 0.85;
-        line-height: 1.4;
+        font-size: 0.6rem; /* Much smaller for side cards */
+        opacity: 0.8;
+        line-height: 1.1;
         color: var(--primary-white);
-        transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
-        font-weight: 400;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-        max-width: 100%;
-        text-align: center;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        transition: all 1s ease;
+        display: none; /* Hide description on side cards for very small screens */
     }
     
     .sponsor-slide.focal p {
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 0.8rem; /* Smaller focal description for very small screens */
         opacity: 1;
-        text-shadow: 
-            0 2px 4px rgba(0, 0, 0, 0.4),
-            0 0 10px rgba(203, 182, 114, 0.1);
-        -webkit-line-clamp: 5;
-        transform: translateY(-1px);
+        line-height: 1.2;
+        display: block; /* Show description on focal card */
     }
     
     /* Mobile-specific section height adjustments for small screens */
