@@ -1310,7 +1310,7 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
 
 
 .section-container1 {
-    max-width: 90vw;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -2172,6 +2172,12 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
         gap: 3rem;
         text-align: center;
     }
+
+    .section-container1 {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+    }
     
     .section-container.reverse {
         direction: ltr;
@@ -2205,6 +2211,11 @@ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);}
     }
     
     .section-container {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+
+    .section-container1 {
         padding: 0 1rem;
         gap: 2rem;
     }
@@ -2901,6 +2912,9 @@ tspan {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+
+    
+    padding: 0 2rem;
 }
 
 .committee-title {
@@ -3031,33 +3045,21 @@ tspan {
     }
 }
 
-/* Handle centering for incomplete rows */
-/* If there's only 1 card in the last row, center it */
-.committee-grid > .committee-card:nth-child(7):last-child {
-    grid-column: 2;
-}
-
-/* If there are 2 cards in the last row, center them */
-.committee-grid > .committee-card:nth-child(8):nth-last-child(2) {
-    grid-column: 1;
-}
-
-.committee-grid > .committee-card:nth-child(9):last-child:nth-child(8) ~ .committee-card {
-    grid-column: 3;
-}
-
-/* Alternative approach for any incomplete row with 1 card */
-.committee-grid > .committee-card:nth-child(3n+1):nth-last-child(1) {
-    grid-column: 2;
-}
-
-/* Alternative approach for any incomplete row with 2 cards */
-.committee-grid > .committee-card:nth-child(3n+1):nth-last-child(2) {
-    grid-column: 1;
-}
-
-.committee-grid > .committee-card:nth-child(3n+2):nth-last-child(1) {
-    grid-column: 3;
+/* Handle centering for incomplete rows - Desktop only */
+@media (min-width: 769px) {
+    /* Center the 9th card (single card in row 3) */
+    .committee-grid > .committee-card:nth-child(9) {
+        grid-column: 2;
+    }
+    
+    /* If there were only 8 cards, center the last 2 cards in row 3 */
+    .committee-grid > .committee-card:nth-child(7):nth-last-child(2) {
+        grid-column: 1;
+    }
+    
+    .committee-grid > .committee-card:nth-child(8):nth-last-child(1) {
+        grid-column: 3;
+    }
 }
 
 footer{
